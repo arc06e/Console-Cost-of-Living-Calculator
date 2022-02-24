@@ -26,5 +26,5 @@ And that is the primary service this calculator renders!
   *  one finished, can invoke 'all' total to sum up all of the different stored totals together 
 
 ## Intended Improvements
-Right now, this app greatly expedites the calculations of my month bills and expenses, but I am still obligated to record these values manually somewhere else. It would be great to
+Right now, this app greatly expedites the calculations of my monthly bills and expenses, but I am still obligated to record these values manually somewhere else. It would be great to
 expand this app by connecting it to a database that, upon request, stores the monthly totals after each calculation.
