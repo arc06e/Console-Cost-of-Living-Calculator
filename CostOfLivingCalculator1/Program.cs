@@ -8,29 +8,29 @@ namespace CostOfLivingCalculator1
         static void Main(string[] args)
         {
             //gonna need some initialized variables here to work with:
-            double grandTotal = 0;
+            decimal grandTotal = 0;
             //1
-            double rentTotal = 0;
+            decimal rentTotal = 0;
             //2
-            double allUtiliTotal = 0;
-            double WatAndElectrTotal = 0;
-            double HeatTotal = 0;
-            double InternetTotal = 0;
+            decimal allUtiliTotal = 0;
+            decimal WatAndElectrTotal = 0;
+            decimal HeatTotal = 0;
+            decimal InternetTotal = 0;
             //3
-            double gasTotal = 0;
+            decimal gasTotal = 0;
             //4
-            double allFoodTotal = 0;
-            double foodTotal = 0;
-            double nonFoodTotal = 0;
+            decimal allFoodTotal = 0;
+            decimal foodTotal = 0;
+            decimal nonFoodTotal = 0;
             //5
-            double takeOutTotal = 0;
+            decimal takeOutTotal = 0;
 
             //doesn't need initial value declared because only called inside function
             //- not hardcoded into program flow
-            double amount;
-            double n;
+            decimal amount;
+            decimal n;
             //allows you to use 'by day/week' switch for multiple pathways
-            double tempTotal = 0;
+            decimal tempTotal = 0;
             //these do the same for their respective switches
             int days = 0;
             string month = "";
@@ -289,14 +289,14 @@ namespace CostOfLivingCalculator1
 
 
             //the functions:
-            double SelectorValidation()
+            decimal SelectorValidation()
             {
                 bool temp = false;
                 string input = Console.ReadLine();
 
                 do
                 {
-                    if (!double.TryParse(input, out n))
+                    if (!decimal.TryParse(input, out n))
                     {
                         Console.WriteLine("That's not even a number...Try Again.");
                         input = Console.ReadLine();
@@ -316,14 +316,14 @@ namespace CostOfLivingCalculator1
             }
 
 
-            double UtilitiesSelectorValidation()
+            decimal UtilitiesSelectorValidation()
             {
                 bool temp = false;
                 string input = Console.ReadLine();
 
                 do
                 {
-                    if (!double.TryParse(input, out n))
+                    if (!decimal.TryParse(input, out n))
                     {
                         Console.WriteLine("That's not even a number...Try Again.");
                         input = Console.ReadLine();
@@ -342,14 +342,14 @@ namespace CostOfLivingCalculator1
                 return n;
             }
 
-            double GrocerySelectorValidation()
+            decimal GrocerySelectorValidation()
             {
                 bool temp = false;
                 string input = Console.ReadLine();
 
                 do
                 {
-                    if (!double.TryParse(input, out n))
+                    if (!decimal.TryParse(input, out n))
                     {
                         Console.WriteLine("Come now, I know you are better than that...Try Again.");
                         input = Console.ReadLine();
@@ -393,14 +393,14 @@ namespace CostOfLivingCalculator1
                 return month;
             }
 
-            double UnitSelectorValidation()
+            decimal UnitSelectorValidation()
             {
                 bool temp = false;
                 string input = Console.ReadLine();
 
                 do
                 {
-                    if (!double.TryParse(input, out n))
+                    if (!decimal.TryParse(input, out n))
                     {
                         Console.WriteLine("Nope...Try Again.");
                         input = Console.ReadLine();
@@ -420,25 +420,37 @@ namespace CostOfLivingCalculator1
             }
 
 
-            double TotalGenerator(double param)
+            decimal TotalGenerator(decimal param)
             {
-
-
                 string input = "";
                 string a = Console.ReadLine();
 
                 do
                 {
-                    if (double.TryParse(a, out amount))
+                    if (decimal.TryParse(a, out amount))
                     {
-                        param += amount;
+                        static bool ConfirmTwoDecimalPlaces(decimal amount)
+                        {
+                            decimal value = amount * 100;
+                            return value == Math.Floor(value);
+                        }
 
-                        Console.WriteLine("\nWould you like to add more to the amount?");
-                        Console.WriteLine("If so, type the amount, then press Enter.");
-                        Console.WriteLine("  Additional Commands:");
-                        Console.WriteLine("   reset - If you have added the wrong amount and wish to restart");
-                        Console.WriteLine("   done- When are you finished totalling");
-                        a = Console.ReadLine();
+                        if (ConfirmTwoDecimalPlaces(amount))
+                        {
+                            param += amount;
+                            Console.WriteLine("\nWould you like to add more to the amount?");
+                            Console.WriteLine("If so, type the amount, then press Enter.");
+                            Console.WriteLine("  Additional Commands:");
+                            Console.WriteLine("   reset - If you have added the wrong amount and wish to restart");
+                            Console.WriteLine("   done- When are you finished totalling");
+                            a = Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You got a little carried away with your decimals. Try Again...");
+                            a = Console.ReadLine();
+                        }
+                       
                     }
                     else if (a == "reset")
                     {
