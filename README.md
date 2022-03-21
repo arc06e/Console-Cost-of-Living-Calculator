@@ -1,7 +1,7 @@
 # Console-Cost-of-Living-Calculator
 
 ## Description
-Welcome to my Cost-of-Living Calculator! This is a simple Console app built in .NET 5 that I designed to help me better visualize, manage, and calculate my living expenses. 
+Welcome to my Cost-of-Living Calculator! This is a simple Console app built in .NET that I designed to help me better visualize, manage, and calculate my living expenses. 
 When I was looking for viable projects to test my command of basic C# syntax and types, I repeatedly came across the observation that a good project solves a simple problem.
 Well, for me, keeping tabs each month on how much was being spent on groceries versus going to utilities and the like was something that I had been neglecting to give its just due. 
 And that is the primary service this calculator renders!
